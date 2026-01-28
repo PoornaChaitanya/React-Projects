@@ -1,0 +1,140 @@
+.contact {
+  position: relative;
+  padding: 140px 8%;
+  background: linear-gradient(180deg,#050505,#0c0c0c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GLASS CONTAINER */
+
+.contact-overlay {
+  width: 100%;
+  max-width: 720px;
+  padding: 70px 60px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.75);
+  text-align: center;
+  animation: contactReveal 1.2s ease forwards;
+}
+
+/* TITLE */
+
+.contact h2 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ff6b00;
+  letter-spacing: 1px;
+}
+
+.contact h2 span {
+  color: white;
+}
+
+/* SUBTEXT */
+
+.contact p {
+  color: #bdbdbd;
+  font-size: 1rem;
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+/* FORM */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-group {
+  display: flex;
+  gap: 20px;
+}
+
+/* INPUTS */
+
+input,
+textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: .95rem;
+  transition: all .35s ease;
+  outline: none;
+}
+
+/* FOCUS ANIMATION */
+
+input:focus,
+textarea:focus {
+  border-color: #ff6b00;
+  box-shadow: 0 0 0 2px rgba(255,107,0,0.25);
+  background: rgba(255,255,255,0.06);
+}
+
+textarea {
+  height: 130px;
+  resize: none;
+}
+
+/* BUTTON */
+
+.contact-btn {
+  margin-top: 10px;
+  padding: 16px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg,#ff6b00,#ff3300);
+  color: white;
+  font-weight: 600;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: all .4s ease;
+  box-shadow: 0 12px 30px rgba(255,107,0,0.35);
+}
+
+/* BUTTON HOVER */
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(255,107,0,0.55);
+}
+
+/* REVEAL ANIMATION */
+
+@keyframes contactReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+  .contact-overlay {
+    padding: 50px 28px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .contact h2 {
+    font-size: 2.1rem;
+  }
+}

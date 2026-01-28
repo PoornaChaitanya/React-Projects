@@ -1,0 +1,132 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  background: rgba(8, 8, 15, 0.75);
+  backdrop-filter: blur(14px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  animation: navFade 0.8s ease;
+}
+
+/* NAVBAR ENTRANCE */
+
+@keyframes navFade {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* LOGO */
+
+.logo{
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ff6b00;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.logo:hover{
+  transform: scale(1.05);
+}
+
+.logo span{
+  color: #ffffff;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links li{
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  cursor: pointer;
+  position: relative;
+  transition: color .3s ease;
+}
+
+/* SMOOTH UNDERLINE */
+
+.nav-links li::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,#ff6b00,#ff3300);
+  transition: width .35s ease;
+  border-radius: 4px;
+}
+
+.nav-links li:hover::after{
+  width: 100%;
+}
+
+.nav-links li:hover{
+  color: #ff6b00;
+}
+
+/* CTA BUTTON */
+
+.join-btn{
+  background: linear-gradient(135deg,#ff6b00,#ff3300);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all .35s ease;
+  box-shadow: 0 6px 18px rgba(255,107,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* BUTTON SHINE EFFECT */
+
+.join-btn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+  transition: .6s;
+}
+
+.join-btn:hover::before{
+  left: 100%;
+}
+
+.join-btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255,107,0,0.55);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px){
+  .nav-links{
+    display: none;
+  }
+}
