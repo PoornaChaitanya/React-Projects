@@ -32,6 +32,7 @@ body {
   font-weight: 700;
   margin-bottom: 18px;
   background: linear-gradient(90deg, #38bdf8, #22c55e);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -79,10 +80,11 @@ body {
   border-radius: 14px;
 }
 
-/* PREMIUM SCROLLBAR */
+/* SCROLLBAR */
 
 .table-wrapper::-webkit-scrollbar {
   width: 6px;
+  height: 8px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
@@ -118,17 +120,23 @@ thead th {
 /* ROW */
 
 tbody tr {
-  animation: fadeIn .4s ease;
+  animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
-  from {opacity:0; transform: translateY(6px);}
-  to {opacity:1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 tbody tr:hover {
-  background: rgba(56,189,248,.08);
-  box-shadow: inset 0 0 0 1px rgba(56,189,248,.15);
+  background: rgba(56, 189, 248, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.15);
 }
 
 /* CELL */
