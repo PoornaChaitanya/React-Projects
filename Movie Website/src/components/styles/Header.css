@@ -1,0 +1,83 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 50px;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.4s ease;
+}
+
+.app.dark header {
+  background: rgba(15, 17, 23, 0.8);
+  border-color: var(--border-dark);
+}
+
+.logo h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* CONTROLS */
+
+.header-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.header-controls input,
+.header-controls select {
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.app.dark .header-controls input,
+.app.dark .header-controls select {
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.header-controls input:focus,
+.header-controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* TOGGLE */
+
+.header-controls label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+
+/* DARK MODE */
+
+.app.dark header select {
+  background: #1f1f2b;
+  color: #f1f1f1;
+  border: 1px solid #333;
+}
+
+/* OPTION COLORS */
+
+.app.dark header select option {
+  background: #1f1f2b;
+  color: #f1f1f1;
+}
