@@ -26,7 +26,7 @@ a {
 .btn {
   background: #fff;
   color: #212121;
-  padding: 14px 25px;
+  padding: 12px 25px;
   font-size: 16px;
   border-radius: 30px;
   cursor: pointer;
@@ -37,7 +37,25 @@ a {
   justify-content: center;
 }
 
-.btn img{
+.btn.dark-btn {
+  background: #212ea0;
+  color: #fff;
+}
+
+.btn img {
   width: 20px;
   margin-left: 10px;
 }
+
+/* ----- MEDIA QUERY ----- */
+
+@media (max-width: 1200px){
+  .container{
+    padding:0 5%;
+  }
+
+  btn{
+    padding: 14px 22px;
+  }
+}
+
