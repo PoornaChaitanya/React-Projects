@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
+import { Link } from "react-router-dom";
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
@@ -9,8 +10,7 @@ const TitleCards = ({ title, category }) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYjVjMDYxYTk1M2JkNWYwODA3MzMxMDZkODg0MzhiMCIsIm5iZiI6MTc3MTE2MDQ5MS45NjcsInN1YiI6IjY5OTFjM2FiNGMxYTMyNGQ2MjEyNDE2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gMRFtR3LSSRuDVUg1vPNkvbBEBL5EJEM2j5Tc0eDG1w",
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
     },
   };
 
@@ -22,28 +22,39 @@ const TitleCards = ({ title, category }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${category ? category : "now_playing"}?language=en-US&page=1`,
+      `https://api.themoviedb.org/3/movie/${category || "now_playing"}?language=en-US&page=1`,
       options,
     )
       .then((res) => res.json())
       .then((res) => setApiData(res.results))
       .catch((err) => console.error(err));
 
-    cardsRef.current.addEventListener("wheel", handleWheel);
-  }, []);
+    const currentRef = cardsRef.current;
+
+    if (currentRef) {
+      currentRef.addEventListener("wheel", handleWheel);
+    }
+
+    return () => {
+      if (currentRef) {
+        currentRef.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, [category]);
+
   return (
     <div className="title-cards">
       <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
           return (
-            <div className="card" key={index}>
+            <Link to={`player/${card.id}`} className="card" key={card.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
                 alt="movie poster"
               />
               <p>{card.original_title}</p>
-            </div>
+            </Link>
           );
         })}
       </div>

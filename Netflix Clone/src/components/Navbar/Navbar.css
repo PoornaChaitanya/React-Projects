@@ -7,11 +7,12 @@
   font-size: 14px;
   color: #e5e5e5;
   background-image: linear-gradient(
-    180 deg,
+    180deg,
     rgba(0, 0, 0, 0.7) 10%,
     transparent
   );
   z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
 .navbar-left {
@@ -50,7 +51,7 @@
   width: 35px;
 }
 
-.navbar-profile{
+.navbar-profile {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -58,7 +59,7 @@
   position: relative;
 }
 
-.navbar .dropdown{
+.navbar .dropdown {
   position: absolute;
   top: 100%;
   right: 0;
@@ -71,11 +72,15 @@
   display: none;
 }
 
-.navbar .dropdown p{
+.navbar .dropdown p {
   font-size: 13px;
   cursor: pointer;
 }
 
-.navbar-profile:hover .dropdown{
+.navbar-profile:hover .dropdown {
   display: block;
+}
+
+.nav-dark {
+  background: #141414;
 }

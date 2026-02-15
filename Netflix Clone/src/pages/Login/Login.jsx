@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
+  const navigate = useNavigate();
 
   return (
     <div className="login">
       <img src={logo} alt="logo" className="login-logo" />
       <div className="login-form">
         <h1>{signState}</h1>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/home");
+          }}
+        >
           {signState === "Sign Up" && (
-            <input type="text" placeholder="Your name" />
+            <input type="text" placeholder="Your name" required />
           )}
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
           <button>{signState}</button>
           <div className="form-help">
             <div className="remember">
