@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
@@ -8,6 +9,7 @@ import caret_icon from "../../assets/caret_icon.svg";
 
 const Navbar = () => {
   const navRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +48,13 @@ const Navbar = () => {
           <img src={profile_img} alt="profile image" className="profile" />
           <img src={caret_icon} alt="caret icon" />
           <div className="dropdown">
-            <p>Sign Out of Netflix</p>
+            <p
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Sign Out of Netflix
+            </p>
           </div>
         </div>
       </div>

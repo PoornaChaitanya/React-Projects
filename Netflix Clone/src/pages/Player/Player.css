@@ -16,7 +16,16 @@
 }
 
 .player iframe {
+  width: min(1000px, 90vw);
+  aspect-ratio: 16 / 9;
+  height: auto;
   border-radius: 10px;
+}
+
+.player-empty {
+  color: #b3b3b3;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 .player-info {
