@@ -63,14 +63,14 @@ const App = () => {
       {/* Custom Cursor Ring */}
       <div
         ref={outlineRef}
-        className="border-primary pointer-events-none fixed top-0 left-0 z-[9999] h-10 w-10 rounded-full border"
+        className="border-primary pointer-events-none fixed top-0 left-0 z-9999 h-10 w-10 rounded-full border"
         style={{ transition: "transform 0.1s ease-out" }}
       ></div>
 
       {/* Custom Cursor Dot */}
       <div
         ref={dotRef}
-        className="bg-primary pointer-events-none fixed top-0 left-0 z-[9999] h-3 w-3 rounded-full"
+        className="bg-primary pointer-events-none fixed top-0 left-0 z-9999 h-3 w-3 rounded-full"
       ></div>
     </div>
   );
