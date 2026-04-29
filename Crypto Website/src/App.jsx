@@ -14,9 +14,10 @@ const App = () => {
         );
         const data = await res.json();
         setCryptoData(data);
-        setLoading(false);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -74,9 +75,23 @@ const App = () => {
                       </span>
                     </div>
                   </td>
-                  <td>₹ {coin.market_cap.toLocaleString()}</td>
-                  <td>₹ {coin.current_price.toLocaleString()}</td>
-                  <td>{coin.circulating_supply.toLocaleString()}</td>
+                  <td>
+                    ₹{" "}
+                    {coin.market_cap != null
+                      ? coin.market_cap.toLocaleString()
+                      : "N/A"}
+                  </td>
+                  <td>
+                    ₹{" "}
+                    {coin.current_price != null
+                      ? coin.current_price.toLocaleString()
+                      : "N/A"}
+                  </td>
+                  <td>
+                    {coin.circulating_supply != null
+                      ? coin.circulating_supply.toLocaleString()
+                      : "N/A"}
+                  </td>
                 </tr>
               ))}
             </tbody>

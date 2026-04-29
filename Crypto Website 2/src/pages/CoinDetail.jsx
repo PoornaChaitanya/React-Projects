@@ -20,8 +20,13 @@ export const CoinDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadCoinData();
-    loadChartData();
+    const loadAllData = async () => {
+      setIsLoading(true);
+      await Promise.all([loadCoinData(), loadChartData()]);
+      setIsLoading(false);
+    };
+
+    loadAllData();
   }, [id]);
 
   const loadCoinData = async () => {
@@ -30,8 +35,6 @@ export const CoinDetail = () => {
       setCoin(data);
     } catch (err) {
       console.error("Error fetching crypto: ", err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -50,8 +53,6 @@ export const CoinDetail = () => {
       setChartData(formattedData);
     } catch (err) {
       console.error("Error fetching chart data: ", err);
-    } finally {
-      setIsLoading(false);
     }
   };
 

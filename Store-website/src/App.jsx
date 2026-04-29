@@ -25,7 +25,6 @@ const App = () => {
   };
 
   const visibleProducts = products.slice(0, visibleCount);
-  console.log(visibleProducts);
 
   return (
     <div className="main">

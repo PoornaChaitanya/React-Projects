@@ -43,7 +43,7 @@ const DisplayAlbum = () => {
       {songsData.map((item, index) => (
         <div
           onClick={() => playWithId(item.id)}
-          key={index}
+          key={item.id}
           className="grid grid-cols-3 sm:grid-cols-4  gap-2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer"
         >
           <p className="text-white">

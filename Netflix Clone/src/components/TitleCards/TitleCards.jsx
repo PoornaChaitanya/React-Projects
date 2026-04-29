@@ -13,21 +13,25 @@ const TitleCards = ({ title, category }) => {
   };
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-      },
-    };
+    const controller = new AbortController();
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${category || "now_playing"}?language=en-US&page=1`,
-      options,
+      `/api/tmdb/movie/${category || "now_playing"}?language=en-US&page=1`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+        signal: controller.signal,
+      },
     )
       .then((res) => res.json())
       .then((res) => setApiData(Array.isArray(res.results) ? res.results : []))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          console.error(err);
+        }
+      });
 
     const currentRef = cardsRef.current;
 
@@ -36,8 +40,11 @@ const TitleCards = ({ title, category }) => {
     }
 
     return () => {
+      controller.abort();
       if (currentRef) {
-        currentRef.removeEventListener("wheel", handleWheel, { passive: false });
+        currentRef.removeEventListener("wheel", handleWheel, {
+          passive: false,
+        });
       }
     };
   }, [category]);
@@ -50,7 +57,11 @@ const TitleCards = ({ title, category }) => {
           return (
             <Link to={`/player/${card.id}`} className="card" key={card.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
+                src={
+                  card.backdrop_path
+                    ? `https://image.tmdb.org/t/p/w500${card.backdrop_path}`
+                    : "https://placehold.co/500x281?text=No+Image"
+                }
                 alt="movie poster"
               />
               <p>{card.original_title}</p>

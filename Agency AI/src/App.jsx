@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import TrustedBy from "./components/TrustedBy";
@@ -22,6 +22,8 @@ const App = () => {
   const position = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    let animationFrameId;
+
     const handleMouseMove = (e) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -38,13 +40,14 @@ const App = () => {
         outlineRef.current.style.transform = `translate3d(${position.current.x - 20}px, ${position.current.y - 20}px, 0)`;
       }
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

@@ -21,9 +21,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-  setVisibleCount(MOVIES_INITIAL);
-}, [sortYear]);
-
+    setVisibleCount(MOVIES_INITIAL);
+  }, [sortYear]);
 
   const handleMoreMovies = () =>
     setVisibleCount((prev) => prev + MOVIES_PER_LOAD);
@@ -55,7 +54,7 @@ const App = () => {
 
       <div className="movie-list">
         {displayMovies.map((movie) => (
-          <MovieCard movie={movie} openModel={setModelMovie} />
+          <MovieCard key={movie.id} movie={movie} openModel={setModelMovie} />
         ))}
       </div>
       {visibleCount < filteredMovies.length && !searchTerm && (

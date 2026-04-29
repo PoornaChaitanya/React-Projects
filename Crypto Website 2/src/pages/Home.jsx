@@ -5,7 +5,7 @@ import CryptoCard from "../components/CryptoCard";
 const Home = () => {
   const [cryptoList, setCryptoList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
-  const [isloading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [viewMode, setViewMode] = useState("grid");
   const [sortBy, setSortBy] = useState("market_cap_rank");
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,7 +104,7 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {isloading ? (
+      {isLoading ? (
         <div className="loading">
           <div className="spinner"></div>
           <p>Loading crypto data...</p>
